@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-night-900;
+  }
+  body {
+    @apply bg-night-900 font-sans text-body antialiased;
+  }
+  ::selection {
+    @apply bg-accent/30 text-white;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #07101f;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1c2a3f;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #22c55e66;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .text-gradient {
+    @apply animate-shimmer bg-gradient-to-r from-white via-glow to-accent bg-clip-text text-transparent;
+    background-size: 200% 200%;
+  }
+  .bg-grid {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .glass {
+    @apply border border-white/[0.08] bg-white/[0.04] backdrop-blur-xl;
+  }
+  .eq-bar {
+    @apply w-1.5 origin-bottom rounded-full bg-gradient-to-t from-accent to-glow;
+    animation: eq 1.1s ease-in-out infinite;
+  }
+  .legal-prose {
+    @apply text-base leading-relaxed text-body;
+  }
+  .legal-prose h2 {
+    @apply mt-10 font-display text-2xl font-semibold text-white;
+  }
+  .legal-prose h2:first-child {
+    @apply mt-0;
+  }
+  .legal-prose h3 {
+    @apply mt-6 font-display text-lg font-semibold text-white;
+  }
+  .legal-prose p {
+    @apply mt-4;
+  }
+  .legal-prose ul {
+    @apply mt-4 list-disc space-y-2 pl-6 marker:text-glow;
+  }
+  .legal-prose ol {
+    @apply mt-4 list-decimal space-y-2 pl-6 marker:text-glow;
+  }
+  .legal-prose a {
+    @apply text-glow underline-offset-2 hover:underline;
+  }
+  .legal-prose strong {
+    @apply font-semibold text-white;
+  }
+}
+
+/* Button shine sweep */
+.shine {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -160%;
+  height: 100%;
+  width: 55%;
+  transform: skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.7s ease;
+}
+button:hover .shine::after {
+  left: 170%;
+}
+
+/* Button ripple */
+.ripple {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: ripple 0.65s ease-out forwards;
+}
+@keyframes ripple {
+  to {
+    width: 280px;
+    height: 280px;
+    opacity: 0;
+  }
+}
+
+/* Swiper overrides */
+.testimonial-swiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.25);
+  opacity: 1;
+}
+.testimonial-swiper .swiper-pagination-bullet-active {
+  background: #22c55e;
+  width: 22px;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
