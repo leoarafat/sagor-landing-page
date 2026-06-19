@@ -2,7 +2,7 @@
 
 A premium music & video distribution landing page built with React 18, Vite, TypeScript, Tailwind CSS, Framer Motion, GSAP, Lenis smooth scroll, SwiperJS, and React CountUp.
 
-## Installation
+## Installations
 
 ```bash
 npm install
